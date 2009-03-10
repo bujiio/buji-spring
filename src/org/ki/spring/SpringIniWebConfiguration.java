@@ -16,15 +16,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.spring;
+package org.ki.spring;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jsecurity.JSecurityException;
-import org.jsecurity.mgt.RealmSecurityManager;
-import org.jsecurity.mgt.SecurityManager;
-import org.jsecurity.realm.Realm;
-import org.jsecurity.web.config.IniWebConfiguration;
+import org.ki.JSecurityException;
+import org.ki.mgt.RealmSecurityManager;
+import org.ki.mgt.SecurityManager;
+import org.ki.realm.Realm;
+import org.ki.web.config.IniWebConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextException;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -37,7 +37,7 @@ import java.util.Map;
  * <p>JSecurity configuration that relies on Spring to define and initialize the JSecurity SecurityManager
  * instance (and all of its dependencies) and makes it available to the JSecurityFilter by performing a Spring bean
  * lookup.  The URL/filter definitions are still .ini based and loaded according to the behavior of the parent class
- * {@link org.jsecurity.web.config.IniWebConfiguration}</p>
+ * {@link org.ki.web.config.IniWebConfiguration}</p>
  * <p/>
  * That is, this class is offers a hybrid means of configuring JSecurity in Spring apps deployed in a web container:
  * Spring XML config for the SecurityManager and its dependencies (realms, etc), and .ini format for configuring
@@ -53,7 +53,7 @@ import java.util.Map;
  * throw an exception that says you have to set the init-param to specify the bean name.</li>
  * <li>if no beans of type {@link SecurityManager}, look for any beans of type {@link Realm}.
  * If some are found, create a default security manager by calling
- * {@link org.jsecurity.web.config.IniWebConfiguration#createSecurityManager(java.util.Map) super.createSecurityManager(Map)}
+ * {@link org.ki.web.config.IniWebConfiguration#createSecurityManager(java.util.Map) super.createSecurityManager(Map)}
  * and set the Realms on that SecurityManager instance.</li>
  * <li>If none of the above, throw an exception that explains the options.</li>
  * <ol>

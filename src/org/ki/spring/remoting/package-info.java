@@ -17,6 +17,7 @@
  * under the License.
  */
 /**
- * Spring AOP support for enabling JSecurity annotations in Spring-configured applications. 
+ * Support to enable Spring-based remote method invocations to carry a JSecurity session ID as part of the
+ * invocation payload, allowing remote clients to perform security operations.
  */
-package org.jsecurity.spring.security.interceptor;
+package org.ki.spring.remoting;

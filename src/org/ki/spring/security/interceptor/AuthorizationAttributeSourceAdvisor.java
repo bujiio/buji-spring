@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.spring.security.interceptor;
+package org.ki.spring.security.interceptor;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jsecurity.authz.annotation.*;
-import org.jsecurity.mgt.SecurityManager;
+import org.ki.authz.annotation.*;
+import org.ki.mgt.SecurityManager;
 import org.springframework.aop.support.StaticMethodMatcherPointcutAdvisor;
 import org.springframework.beans.factory.InitializingBean;
 
@@ -57,11 +57,11 @@ public class AuthorizationAttributeSourceAdvisor extends StaticMethodMatcherPoin
      * Returns <tt>true</tt> if the method has any JSecurity annotations, false otherwise.
      * The annotations inspected are:
      * <ul>
-     * <li>{@link org.jsecurity.authz.annotation.RequiresAuthentication RequiresAuthentication}</li>
-     * <li>{@link org.jsecurity.authz.annotation.RequiresUser RequiresUser}</li>
-     * <li>{@link org.jsecurity.authz.annotation.RequiresGuest RequiresGuest}</li>
-     * <li>{@link org.jsecurity.authz.annotation.RequiresRoles RequiresRoles}</li>
-     * <li>{@link org.jsecurity.authz.annotation.RequiresPermissions RequiresPermissions}</li>
+     * <li>{@link org.ki.authz.annotation.RequiresAuthentication RequiresAuthentication}</li>
+     * <li>{@link org.ki.authz.annotation.RequiresUser RequiresUser}</li>
+     * <li>{@link org.ki.authz.annotation.RequiresGuest RequiresGuest}</li>
+     * <li>{@link org.ki.authz.annotation.RequiresRoles RequiresRoles}</li>
+     * <li>{@link org.ki.authz.annotation.RequiresPermissions RequiresPermissions}</li>
      * </ul>
      *
      * @param method      the method to check for a JSecurity annotation

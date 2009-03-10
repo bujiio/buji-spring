@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.spring;
+package org.ki.spring;
 
-import org.jsecurity.web.servlet.JSecurityFilter;
+import org.ki.web.servlet.JSecurityFilter;
 
 /**
  * Extension of JSecurityFilter that uses {@link SpringIniWebConfiguration} to configure JSecurity in a Spring web

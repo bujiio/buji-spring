@@ -16,12 +16,12 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.spring.remoting;
+package org.ki.spring.remoting;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jsecurity.mgt.SecurityManager;
-import org.jsecurity.util.ThreadContext;
+import org.ki.mgt.SecurityManager;
+import org.ki.util.ThreadContext;
 import org.springframework.remoting.support.DefaultRemoteInvocationExecutor;
 import org.springframework.remoting.support.RemoteInvocation;
 
@@ -65,7 +65,7 @@ public class SecureRemoteInvocationExecutor extends DefaultRemoteInvocationExecu
     |  A C C E S S O R S / M O D I F I E R S    |
     ============================================*/
 
-    public void setSecurityManager(org.jsecurity.mgt.SecurityManager securityManager) {
+    public void setSecurityManager(org.ki.mgt.SecurityManager securityManager) {
         this.securityManager = securityManager;
     }
 

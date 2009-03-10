@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.spring;
+package org.ki.spring;
 
 import static org.easymock.EasyMock.*;
-import org.jsecurity.mgt.SecurityManager;
-import org.jsecurity.web.servlet.JSecurityFilter;
+import org.ki.mgt.SecurityManager;
+import org.ki.web.servlet.JSecurityFilter;
 import org.junit.Test;
 import org.springframework.web.context.WebApplicationContext;
 

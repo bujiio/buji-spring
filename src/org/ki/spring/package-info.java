@@ -17,7 +17,7 @@
  * under the License.
  */
 /**
- * Support to enable Spring-based remote method invocations to carry a JSecurity session ID as part of the
- * invocation payload, allowing remote clients to perform security operations.
+ * <a href="http://www.springframework.org" target="_top">Spring Application Framework</a> support for enabling
+ * JSecurity in spring applications.
  */
-package org.jsecurity.spring.remoting;
+package org.ki.spring;

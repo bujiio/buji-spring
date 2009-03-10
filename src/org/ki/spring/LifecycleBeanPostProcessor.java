@@ -16,20 +16,20 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.spring;
+package org.ki.spring;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jsecurity.util.Destroyable;
-import org.jsecurity.util.Initializable;
+import org.ki.util.Destroyable;
+import org.ki.util.Initializable;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.FatalBeanException;
 import org.springframework.beans.factory.config.DestructionAwareBeanPostProcessor;
 
 /**
  * <p>Bean post processor for Spring that automatically calls the <tt>init()</tt> and/or
- * <tt>destroy()</tt> methods on JSecurity objects that implement the {@link org.jsecurity.util.Initializable}
- * or {@link org.jsecurity.util.Destroyable} interfaces, respectfully.  This post processor makes it easier
+ * <tt>destroy()</tt> methods on JSecurity objects that implement the {@link org.ki.util.Initializable}
+ * or {@link org.ki.util.Destroyable} interfaces, respectfully.  This post processor makes it easier
  * to configure JSecurity beans in Spring, since the user never has to worry about whether or not if they
  * have to specify init-method and destroy-method bean attributes.</p>
  *
@@ -48,7 +48,7 @@ public class LifecycleBeanPostProcessor implements DestructionAwareBeanPostProce
     private static final Log log = LogFactory.getLog(LifecycleBeanPostProcessor.class);
 
     /**
-     * Calls the <tt>init()</tt> methods on the bean if it implements {@link org.jsecurity.util.Initializable}
+     * Calls the <tt>init()</tt> methods on the bean if it implements {@link org.ki.util.Initializable}
      *
      * @param object the object being initialized.
      * @param name   the name of the bean being initialized.
@@ -81,7 +81,7 @@ public class LifecycleBeanPostProcessor implements DestructionAwareBeanPostProce
 
 
     /**
-     * Calls the <tt>destroy()</tt> methods on the bean if it implements {@link org.jsecurity.util.Destroyable}
+     * Calls the <tt>destroy()</tt> methods on the bean if it implements {@link org.ki.util.Destroyable}
      *
      * @param object the object being initialized.
      * @param name   the name of the bean being initialized.

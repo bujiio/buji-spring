@@ -16,14 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jsecurity.spring.remoting;
+package org.ki.spring.remoting;
 
 import org.aopalliance.intercept.MethodInvocation;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.jsecurity.SecurityUtils;
-import org.jsecurity.session.Session;
-import org.jsecurity.subject.Subject;
+import org.ki.SecurityUtils;
+import org.ki.session.Session;
+import org.ki.subject.Subject;
 import org.springframework.remoting.support.DefaultRemoteInvocationFactory;
 import org.springframework.remoting.support.RemoteInvocation;
 import org.springframework.remoting.support.RemoteInvocationFactory;
@@ -48,7 +48,7 @@ public class SecureRemoteInvocationFactory extends DefaultRemoteInvocationFactor
 
     public static final String SESSION_ID_KEY = Session.class.getName() + "_ID_KEY";
 
-    private static final String SESSION_ID_SYSTEM_PROPERTY_NAME = "jsecurity.session.id";
+    private static final String SESSION_ID_SYSTEM_PROPERTY_NAME = "ki.session.id";
 
     /**
      * Creates a {@link RemoteInvocation} with the current session ID as an
@@ -71,12 +71,12 @@ public class SecureRemoteInvocationFactory extends DefaultRemoteInvocationFactor
         if (sessionId == null) {
             if (log.isTraceEnabled()) {
                 log.trace("No Session found for the currently executing subject via subject.getSession(false).  " +
-                        "Attempting to revert back to the 'jsecurity.session.id' system property...");
+                        "Attempting to revert back to the 'ki.session.id' system property...");
             }
         }
         sessionId = System.getProperty(SESSION_ID_SYSTEM_PROPERTY_NAME);
         if (sessionId == null && log.isTraceEnabled()) {
-            log.trace("No 'jsecurity.session.id' system property found.  Heuristics have been exhausted; " +
+            log.trace("No 'ki.session.id' system property found.  Heuristics have been exhausted; " +
                     "RemoteInvocation will not contain a sessionId.");
         }
         RemoteInvocation ri = new RemoteInvocation(methodInvocation);
