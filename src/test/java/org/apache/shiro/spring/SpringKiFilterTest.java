@@ -16,10 +16,10 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.spring;
+package org.apache.shiro.spring;
 
-import org.apache.ki.mgt.SecurityManager;
-import org.apache.ki.web.servlet.KiFilter;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.web.servlet.ShiroFilter;
 import static org.easymock.EasyMock.*;
 import org.junit.Test;
 import org.springframework.web.context.WebApplicationContext;
@@ -38,18 +38,18 @@ public class SpringKiFilterTest {
 
     @Test
     public void testDefaultConfig() throws Exception {
-        SpringKiFilter filter = new SpringKiFilter();
+        SpringShiroFilter filter = new SpringShiroFilter();
 
         FilterConfig mockConfig = createMock(FilterConfig.class);
-        expect(mockConfig.getInitParameter(KiFilter.CONFIG_CLASS_NAME_INIT_PARAM_NAME)).andReturn(null);
-        expect(mockConfig.getInitParameter(KiFilter.CONFIG_INIT_PARAM_NAME)).andReturn(null);
-        expect(mockConfig.getInitParameter(KiFilter.CONFIG_URL_INIT_PARAM_NAME)).andReturn(null);
+        expect(mockConfig.getInitParameter(ShiroFilter.CONFIG_CLASS_NAME_INIT_PARAM_NAME)).andReturn(null);
+        expect(mockConfig.getInitParameter(ShiroFilter.CONFIG_INIT_PARAM_NAME)).andReturn(null);
+        expect(mockConfig.getInitParameter(ShiroFilter.CONFIG_URL_INIT_PARAM_NAME)).andReturn(null);
         expect(mockConfig.getInitParameter(SpringIniWebConfiguration.SECURITY_MANAGER_BEAN_NAME_PARAM_NAME)).andReturn(null);
 
         ServletContext mockContext = createMock(ServletContext.class);
         WebApplicationContext appCtx = createMock(WebApplicationContext.class);
         SecurityManager secMgr = createMock(SecurityManager.class);
-        Map<String, org.apache.ki.mgt.SecurityManager> beansOfType = new HashMap<String, SecurityManager>(1);
+        Map<String, org.apache.shiro.mgt.SecurityManager> beansOfType = new HashMap<String, SecurityManager>(1);
         beansOfType.put("securityManager", secMgr);
 
         expect(mockContext.getAttribute(WebApplicationContext.ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE)).andReturn(appCtx);

@@ -16,17 +16,17 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.spring.security.interceptor;
+package org.apache.shiro.spring.security.interceptor;
 
 import java.lang.reflect.Method;
 
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 
-import org.apache.ki.authz.aop.AnnotationsAuthorizingMethodInterceptor;
+import org.apache.shiro.authz.aop.AnnotationsAuthorizingMethodInterceptor;
 
 /**
- * Allows Ki Annotations to work in any <a href="http://aopalliance.sourceforge.net/">AOP Alliance</a>
+ * Allows Shiro Annotations to work in any <a href="http://aopalliance.sourceforge.net/">AOP Alliance</a>
  * specific implementation environment (for example, Spring).
  *
  * @author Les Hazlewood
@@ -38,16 +38,16 @@ public class AopAllianceAnnotationsAuthorizingMethodInterceptor
     /**
      * Creates a {@link MethodInvocation MethodInvocation} that wraps an
      * {@link org.aopalliance.intercept.MethodInvocation org.aopalliance.intercept.MethodInvocation} instance,
-     * enabling Ki Annotations in <a href="http://aopalliance.sourceforge.net/">AOP Alliance</a> environments
+     * enabling Shiro Annotations in <a href="http://aopalliance.sourceforge.net/">AOP Alliance</a> environments
      * (Spring, etc).
      *
      * @param implSpecificMethodInvocation AOP Alliance {@link org.aopalliance.intercept.MethodInvocation MethodInvocation}
-     * @return a Ki {@link MethodInvocation MethodInvocation} instance that wraps the AOP Alliance instance.
+     * @return a Shiro {@link MethodInvocation MethodInvocation} instance that wraps the AOP Alliance instance.
      */
-    protected org.apache.ki.aop.MethodInvocation createMethodInvocation(Object implSpecificMethodInvocation) {
+    protected org.apache.shiro.aop.MethodInvocation createMethodInvocation(Object implSpecificMethodInvocation) {
         final MethodInvocation mi = (MethodInvocation) implSpecificMethodInvocation;
 
-        return new org.apache.ki.aop.MethodInvocation() {
+        return new org.apache.shiro.aop.MethodInvocation() {
             public Method getMethod() {
                 return mi.getMethod();
             }
@@ -80,15 +80,15 @@ public class AopAllianceAnnotationsAuthorizingMethodInterceptor
     }
 
     /**
-     * Creates a Ki {@link MethodInvocation MethodInvocation} instance and then immediately calls
-     * {@link org.apache.ki.authz.aop.AuthorizingMethodInterceptor#invoke super.invoke}.
+     * Creates a Shiro {@link MethodInvocation MethodInvocation} instance and then immediately calls
+     * {@link org.apache.shiro.authz.aop.AuthorizingMethodInterceptor#invoke super.invoke}.
      *
      * @param methodInvocation the AOP Alliance-specific <code>methodInvocation</code> instance.
      * @return the return value from invoking the method invocation.
      * @throws Throwable if the underlying AOP Alliance method invocation throws a <code>Throwable</code>.
      */
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
-        org.apache.ki.aop.MethodInvocation mi = createMethodInvocation(methodInvocation);
+        org.apache.shiro.aop.MethodInvocation mi = createMethodInvocation(methodInvocation);
         return super.invoke(mi);
     }
 }

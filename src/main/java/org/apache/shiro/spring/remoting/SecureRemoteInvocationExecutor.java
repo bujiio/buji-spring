@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.spring.remoting;
+package org.apache.shiro.spring.remoting;
 
 import java.io.Serializable;
 import java.lang.reflect.InvocationTargetException;
@@ -28,8 +28,8 @@ import org.springframework.remoting.support.RemoteInvocation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.ki.mgt.SecurityManager;
-import org.apache.ki.util.ThreadContext;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.util.ThreadContext;
 
 
 /**
@@ -69,7 +69,7 @@ public class SecureRemoteInvocationExecutor extends DefaultRemoteInvocationExecu
     |  A C C E S S O R S / M O D I F I E R S    |
     ============================================*/
 
-    public void setSecurityManager(org.apache.ki.mgt.SecurityManager securityManager) {
+    public void setSecurityManager(org.apache.shiro.mgt.SecurityManager securityManager) {
         this.securityManager = securityManager;
     }
 
@@ -90,7 +90,7 @@ public class SecureRemoteInvocationExecutor extends DefaultRemoteInvocationExecu
                 ThreadContext.bindSessionId(sessionId);
             } else {
                 if (log.isTraceEnabled()) {
-                    log.trace("RemoteInvocation did not contain a Ki Session id attribute under " +
+                    log.trace("RemoteInvocation did not contain a Shiro Session id attribute under " +
                             "key [" + SecureRemoteInvocationFactory.SESSION_ID_KEY + "].  A Subject based " +
                             "on an existing Session will not be available during the method invocatin.");
                 }

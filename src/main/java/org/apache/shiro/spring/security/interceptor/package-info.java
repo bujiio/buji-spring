@@ -17,7 +17,6 @@
  * under the License.
  */
 /**
- * Support to enable Spring-based remote method invocations to carry a Ki session ID as part of the
- * invocation payload, allowing remote clients to perform security operations.
+ * Spring AOP support for enabling Shiro annotations in Spring-configured applications.
  */
-package org.apache.ki.spring.remoting;
+package org.apache.shiro.spring.security.interceptor;

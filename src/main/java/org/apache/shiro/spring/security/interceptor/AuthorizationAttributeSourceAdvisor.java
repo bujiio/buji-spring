@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.spring.security.interceptor;
+package org.apache.shiro.spring.security.interceptor;
 
 import java.lang.reflect.Method;
 
@@ -26,12 +26,12 @@ import org.springframework.beans.factory.InitializingBean;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.ki.authz.annotation.RequiresAuthentication;
-import org.apache.ki.authz.annotation.RequiresGuest;
-import org.apache.ki.authz.annotation.RequiresPermissions;
-import org.apache.ki.authz.annotation.RequiresRoles;
-import org.apache.ki.authz.annotation.RequiresUser;
-import org.apache.ki.mgt.SecurityManager;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
+import org.apache.shiro.authz.annotation.RequiresGuest;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.authz.annotation.RequiresUser;
+import org.apache.shiro.mgt.SecurityManager;
 
 
 /**
@@ -56,24 +56,24 @@ public class AuthorizationAttributeSourceAdvisor extends StaticMethodMatcherPoin
         return securityManager;
     }
 
-    public void setSecurityManager(org.apache.ki.mgt.SecurityManager securityManager) {
+    public void setSecurityManager(org.apache.shiro.mgt.SecurityManager securityManager) {
         this.securityManager = securityManager;
     }
 
     /**
-     * Returns <tt>true</tt> if the method has any Ki annotations, false otherwise.
+     * Returns <tt>true</tt> if the method has any Shiro annotations, false otherwise.
      * The annotations inspected are:
      * <ul>
-     * <li>{@link org.apache.ki.authz.annotation.RequiresAuthentication RequiresAuthentication}</li>
-     * <li>{@link org.apache.ki.authz.annotation.RequiresUser RequiresUser}</li>
-     * <li>{@link org.apache.ki.authz.annotation.RequiresGuest RequiresGuest}</li>
-     * <li>{@link org.apache.ki.authz.annotation.RequiresRoles RequiresRoles}</li>
-     * <li>{@link org.apache.ki.authz.annotation.RequiresPermissions RequiresPermissions}</li>
+     * <li>{@link org.apache.shiro.authz.annotation.RequiresAuthentication RequiresAuthentication}</li>
+     * <li>{@link org.apache.shiro.authz.annotation.RequiresUser RequiresUser}</li>
+     * <li>{@link org.apache.shiro.authz.annotation.RequiresGuest RequiresGuest}</li>
+     * <li>{@link org.apache.shiro.authz.annotation.RequiresRoles RequiresRoles}</li>
+     * <li>{@link org.apache.shiro.authz.annotation.RequiresPermissions RequiresPermissions}</li>
      * </ul>
      *
-     * @param method      the method to check for a Ki annotation
-     * @param targetClass the class potentially declaring Ki annotations
-     * @return <tt>true</tt> if the method has a Ki annotation, false otherwise.
+     * @param method      the method to check for a Shiro annotation
+     * @param targetClass the class potentially declaring Shiro annotations
+     * @return <tt>true</tt> if the method has a Shiro annotation, false otherwise.
      * @see org.springframework.aop.MethodMatcher#matches(java.lang.reflect.Method, Class)
      */
     public boolean matches(Method method, Class targetClass) {

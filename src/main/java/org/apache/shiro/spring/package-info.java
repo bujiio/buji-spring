@@ -18,6 +18,6 @@
  */
 /**
  * <a href="http://www.springframework.org" target="_top">Spring Application Framework</a> support for enabling
- * Ki in spring applications.
+ * Shiro in spring applications.
  */
-package org.apache.ki.spring;
+package org.apache.shiro.spring;

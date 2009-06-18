@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.spring.remoting;
+package org.apache.shiro.spring.remoting;
 
 import java.io.Serializable;
 import java.net.InetAddress;
@@ -29,18 +29,18 @@ import org.springframework.remoting.support.RemoteInvocationFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.ki.SecurityUtils;
-import org.apache.ki.util.ThreadContext;
-import org.apache.ki.session.Session;
-import org.apache.ki.session.mgt.SessionManager;
-import org.apache.ki.subject.Subject;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.util.ThreadContext;
+import org.apache.shiro.session.Session;
+import org.apache.shiro.session.mgt.SessionManager;
+import org.apache.shiro.subject.Subject;
 
 
 /**
  * A {@link RemoteInvocationFactory} that passes the session ID to the server via a
  * {@link RemoteInvocation} {@link RemoteInvocation#getAttribute(String) attribute}.
  * This factory is the client-side part of
- * the Ki Spring remoting invocation.  A {@link SecureRemoteInvocationExecutor} should
+ * the Shiro Spring remoting invocation.  A {@link SecureRemoteInvocationExecutor} should
  * be used to export the server-side remote services to ensure that the appropriate
  * Subject and Session are bound to the remote thread during execution.
  *
@@ -55,7 +55,7 @@ public class SecureRemoteInvocationFactory extends DefaultRemoteInvocationFactor
     public static final String SESSION_ID_KEY = Session.class.getName() + "_ID_KEY";
     public static final String INET_ADDRESS_KEY = InetAddress.class.getName() + "_KEY";
 
-    private static final String SESSION_ID_SYSTEM_PROPERTY_NAME = "ki.session.id";
+    private static final String SESSION_ID_SYSTEM_PROPERTY_NAME = "shiro.session.id";
 
     /**
      * Creates a {@link RemoteInvocation} with the current session ID as an
@@ -97,11 +97,11 @@ public class SecureRemoteInvocationFactory extends DefaultRemoteInvocationFactor
         if (sessionId == null) {
             if (log.isTraceEnabled()) {
                 log.trace("No Session found for the currently executing subject via subject.getSession(false).  " +
-                    "Attempting to revert back to the 'ki.session.id' system property...");
+                    "Attempting to revert back to the 'shiro.session.id' system property...");
             }
             sessionId = System.getProperty(SESSION_ID_SYSTEM_PROPERTY_NAME);
             if (sessionId == null && log.isTraceEnabled()) {
-                log.trace("No 'ki.session.id' system property found.  Heuristics have been exhausted; " +
+                log.trace("No 'shiro.session.id' system property found.  Heuristics have been exhausted; " +
                     "RemoteInvocation will not contain a sessionId.");
             }
         }

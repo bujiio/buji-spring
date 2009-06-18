@@ -1,9 +1,9 @@
-package org.apache.ki.spring.remoting;
+package org.apache.shiro.spring.remoting;
 
 import org.aopalliance.intercept.MethodInvocation;
-import org.apache.ki.session.mgt.SessionManager;
-import org.apache.ki.subject.Subject;
-import org.apache.ki.util.ThreadContext;
+import org.apache.shiro.session.mgt.SessionManager;
+import org.apache.shiro.subject.Subject;
+import org.apache.shiro.util.ThreadContext;
 import static org.easymock.EasyMock.*;
 import org.junit.After;
 import static org.junit.Assert.*;

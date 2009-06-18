@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.apache.ki.spring;
+package org.apache.shiro.spring;
 
 import java.util.Collection;
 import java.util.Map;
@@ -29,26 +29,26 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.apache.ki.KiException;
-import org.apache.ki.mgt.RealmSecurityManager;
-import org.apache.ki.mgt.SecurityManager;
-import org.apache.ki.realm.Realm;
-import org.apache.ki.web.config.IniWebConfiguration;
+import org.apache.shiro.ShiroException;
+import org.apache.shiro.mgt.RealmSecurityManager;
+import org.apache.shiro.mgt.SecurityManager;
+import org.apache.shiro.realm.Realm;
+import org.apache.shiro.web.config.IniWebConfiguration;
 
 
 /**
- * <p>Ki configuration that relies on Spring to define and initialize the Ki SecurityManager
+ * <p>Shiro configuration that relies on Spring to define and initialize the Shiro SecurityManager
  * instance (and all of its dependencies) and makes it available to the KiFilter by performing a Spring bean
  * lookup.  The URL/filter definitions are still .ini based and loaded according to the behavior of the parent class
- * {@link org.apache.ki.web.config.IniWebConfiguration}</p>
+ * {@link org.apache.shiro.web.config.IniWebConfiguration}</p>
  * <p/>
- * That is, this class is offers a hybrid means of configuring Ki in Spring apps deployed in a web container:
+ * That is, this class is offers a hybrid means of configuring Shiro in Spring apps deployed in a web container:
  * Spring XML config for the SecurityManager and its dependencies (realms, etc), and .ini format for configuring
  * the filters and the url chains in web.xml, which many people like to maintain separation of concerns:
  * the web/filter/url config stays in web.xml, whereas the SecurityManager config (really a business-tier concern)
  * stays in Spring .xml files.
  * <p/>
- * The behavior used to acquire the Ki <code>SecurityManager</code> is as follows:
+ * The behavior used to acquire the Shiro <code>SecurityManager</code> is as follows:
  * <ol>
  * <li>If a 'securityManagerBeanName' init-param is set, retrieve that sec manager from Spring.</li>
  * <li>If not, look for beans of type {@link SecurityManager} - if there is one instance, use that.
@@ -56,7 +56,7 @@ import org.apache.ki.web.config.IniWebConfiguration;
  * throw an exception that says you have to set the init-param to specify the bean name.</li>
  * <li>if no beans of type {@link SecurityManager}, look for any beans of type {@link Realm}.
  * If some are found, create a default security manager by calling
- * {@link org.apache.ki.web.config.IniWebConfiguration#createSecurityManager(java.util.Map) super.createSecurityManager(Map)}
+ * {@link org.apache.shiro.web.config.IniWebConfiguration#createSecurityManager(java.util.Map) super.createSecurityManager(Map)}
  * and set the Realms on that SecurityManager instance.</li>
  * <li>If none of the above, throw an exception that explains the options.</li>
  * <ol>
@@ -89,7 +89,8 @@ public class SpringIniWebConfiguration extends IniWebConfiguration {
     }
 
     @Override
-    public void init() throws KiException {
+    public void init() throws ShiroException
+    {
         String beanName = getFilterConfig().getInitParameter(SECURITY_MANAGER_BEAN_NAME_PARAM_NAME);
         if (beanName != null) {
             setSecurityManagerBeanName(beanName);
@@ -115,7 +116,7 @@ public class SpringIniWebConfiguration extends IniWebConfiguration {
 
         SecurityManager securityManager = null;
         if (beanName != null) {
-            securityManager = (SecurityManager) appCtx.getBean(beanName, org.apache.ki.mgt.SecurityManager.class);
+            securityManager = (SecurityManager) appCtx.getBean(beanName, org.apache.shiro.mgt.SecurityManager.class);
         }
 
         if (securityManager == null) {
