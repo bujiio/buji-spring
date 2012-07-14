@@ -20,16 +20,21 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
     <parent>
-        <groupId>org.apache.shiro</groupId>
-        <artifactId>shiro-root</artifactId>
-        <version>1.3.0-SNAPSHOT</version>
-        <relativePath>../../pom.xml</relativePath>
+        <groupId>io.buji</groupId>
+        <artifactId>buji-parent</artifactId>
+        <version>1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>shiro-spring</artifactId>
+    <artifactId>buji-spring</artifactId>
     <name>Apache Shiro :: Support :: Spring</name>
     <packaging>bundle</packaging>
+
+    <scm>
+        <connection>scm:git:git@github.com:bujiio/buji-spring.git</connection>
+        <developerConnection>scm:git:git@github.com:bujiio/buji-spring.git</developerConnection>
+        <url>https://github.com/bujiio/buji-spring</url>
+    </scm>
 
     <dependencies>
         <dependency>
